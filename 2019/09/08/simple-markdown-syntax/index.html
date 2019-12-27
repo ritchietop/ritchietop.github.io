@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="python, scala, spark, hive, hbase, hadoop, tensorflow, flink, 机器学习, 深度学习, 算法"><title>简明Markdown语法 | Ritchie's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '87868a9c378cabc27812ae2d1ebfbb13';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();</script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">简明Markdown语法</h1><a id="logo" href="/.">Ritchie's Blog</a><p class="description">点滴记录，技术提升进程</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-list"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a><a href="/timeline/"><i class="fa fa-history"> 大事记</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">简明Markdown语法</h1><div class="post-meta">Sep 8, 2019<span> | </span><span class="category"><a href="/categories/markdown/">markdown</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><div class="post-content"><p><a name="inner-link" id="&#x4F60;&#x770B;&#x4E0D;&#x89C1;&#x6211;&#xFF0C;&#x54C8;&#x54C8;&#x54C8;~"></a></p>
+<blockquote>
+<p>&#x5DE5;&#x6B32;&#x5584;&#x5176;&#x4E8B;&#xFF0C;&#x5FC5;&#x5148;&#x5229;&#x5176;&#x5668;</p>
+</blockquote>
+<p>&#x65E2;&#x7136;&#x5F00;&#x59CB;&#x4E13;&#x5FC3;&#x5199;&#x535A;&#x5BA2;&#xFF0C;&#x81EA;&#x7136;&#x5C31;&#x9700;&#x8981;&#x5BF9;markdown&#x7684;&#x8BED;&#x6CD5;&#x4E86;&#x7136;&#x4E8E;&#x80F8;&#x3002;&#x4E4B;&#x524D;&#x867D;&#x7136;&#x4E5F;&#x7528;&#x8FC7;&#x4E00;&#x4E9B;&#x7279;&#x6027;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x603B;&#x5F52;&#x4E0D;&#x80FD;&#x6709;&#x4E00;&#x79CD;&#x9A7E;&#x8F7B;&#x5C31;&#x719F;&#x7684;&#x611F;&#x89C9;&#x3002;&#x4F5C;&#x4E3A;&#x535A;&#x5BA2;&#x7684;&#x5F00;&#x7BC7;&#x4E4B;&#x4F5C;&#xFF0C;&#x4ECA;&#x5929;&#x5C31;&#x597D;&#x597D;&#x8BF4;&#x9053;&#x8BF4;&#x9053;&#x3002;&#xFF08;&#x4E00;&#x4E2A;&#x6709;&#x610F;&#x601D;&#x7684;&#x4E8B;&#x60C5;&#x662F;&#xFF0C;&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;&#x4E5F;&#x662F;&#x7528;markdown&#x8BED;&#x8A00;&#x5199;&#x7684;&#xFF09;</p>
+<a id="more"></a>
+<p>&#x76EE;&#x524D;&#x5E02;&#x9762;&#x4E0A;&#x5BF9;markdown&#x7684;&#x5B9E;&#x73B0;&#x6709;&#x5F88;&#x591A;&#x7248;&#x672C;&#xFF0C;&#x672C;&#x7740;&#x4ECE;&#x7B80;&#x53BB;&#x7E41;&#x3001;&#x901A;&#x7528;&#x9AD8;&#x6548;&#x7684;&#x539F;&#x5219;&#xFF0C;&#x7ECF;&#x8FC7;&#x591A;&#x65B9;&#x5BF9;&#x6BD4;&#xFF0C;&#x6700;&#x7EC8;&#x9009;&#x62E9;&#x4E86;Github&#x5B98;&#x65B9;&#x7684;markdown&#x5B9E;&#x73B0;&#x7248;&#x672C;&#x3002;<a href="https://help.github.com/en/articles/basic-writing-and-formatting-syntax" target="_blank" rel="noopener">Github&#x5B98;&#x65B9;&#x8BED;&#x6CD5;&#x89C4;&#x8303;</a></p>
+<p>&#x8BDD;&#x4E0D;&#x591A;&#x8BF4;&#xFF0C;&#x4E0A;&#x83DC;&#xFF01;</p>
+<h1>1. &#x6807;&#x9898;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># &#x4E00;&#x7EA7;&#x6807;&#x9898;  </span><br><span class="line">## &#x4E8C;&#x7EA7;&#x6807;&#x9898;</span><br><span class="line">### &#x4E09;&#x7EA7;&#x6807;&#x9898;</span><br><span class="line">#### &#x56DB;&#x7EA7;&#x6807;&#x9898;</span><br><span class="line">##### &#x4E94;&#x7EA7;&#x6807;&#x9898;</span><br><span class="line">###### &#x516D;&#x7EA7;&#x6807;&#x9898;</span><br></pre></td></tr></table></figure>
+<h1>&#x4E00;&#x7EA7;&#x6807;&#x9898;</h1>
+<h2>&#x4E8C;&#x7EA7;&#x6807;&#x9898;</h2>
+<h3>&#x4E09;&#x7EA7;&#x6807;&#x9898;</h3>
+<h4>&#x56DB;&#x7EA7;&#x6807;&#x9898;</h4>
+<h5>&#x4E94;&#x7EA7;&#x6807;&#x9898;</h5>
+<h6>&#x516D;&#x7EA7;&#x6807;&#x9898;</h6>
+<h1>2. &#x6587;&#x672C;&#x98CE;&#x683C;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">**&#x7C97;&#x4F53;&#x98CE;&#x683C;**</span><br><span class="line"></span><br><span class="line">*&#x659C;&#x4F53;&#x98CE;&#x683C;*</span><br><span class="line"></span><br><span class="line">~~&#x5220;&#x9664;&#x7EBF;&#x98CE;&#x683C;~~</span><br><span class="line"></span><br><span class="line">**&#x7C97;&#x4F53;&#x5D4C;&#x5957; _&#x659C;&#x4F53;_ &#x98CE;&#x683C;**</span><br><span class="line"></span><br><span class="line">***&#x53C8;&#x7C97;&#x53C8;&#x659C;&#x4F53;&#x98CE;&#x683C;***</span><br></pre></td></tr></table></figure>
+<p><strong>&#x7C97;&#x4F53;&#x98CE;&#x683C;</strong></p>
+<p><em>&#x659C;&#x4F53;&#x98CE;&#x683C;</em></p>
+<p><s>&#x5220;&#x9664;&#x7EBF;&#x98CE;&#x683C;</s></p>
+<p><strong>&#x7C97;&#x4F53;&#x5D4C;&#x5957; <em>&#x659C;&#x4F53;</em> &#x98CE;&#x683C;</strong></p>
+<p><strong><em>&#x53C8;&#x7C97;&#x53C8;&#x659C;&#x4F53;&#x98CE;&#x683C;</em></strong></p>
+<h1>3. &#x6587;&#x672C;&#x5F15;&#x7528;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x6587;&#x672C;&#x5F15;&#x7528;&#x5185;&#x4E5F;&#x53EF;&#x4EE5;&#x52A0;&#x5165;&#x5176;&#x5B83;markdown&#x8BED;&#x6CD5;</span><br><span class="line"></span><br><span class="line">&gt; ## &#x540D;&#x4EBA;&#x540D;&#x8A00;</span><br><span class="line">&gt; &#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x5199;&#x7684;&#x771F;&#x4ED6;&#x5988;&#x900F;&#x5F7B;&#x3002; &#x2014;&#x2014; &#x9C81;&#x8FC5;</span><br><span class="line">&gt; &gt; &#x4E0A;&#x9762;&#x7684;&#x4E0D;&#x662F;&#x6211;&#x8BF4;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6211;+1&#x3002; &#x2014;&#x2014; &#x9C81;&#x8FC5;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h2>&#x540D;&#x4EBA;&#x540D;&#x8A00;</h2>
+<p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x5199;&#x7684;&#x771F;&#x4ED6;&#x5988;&#x900F;&#x5F7B;&#x3002; &#x2014;&#x2014; &#x9C81;&#x8FC5;</p>
+<blockquote>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4E0D;&#x662F;&#x6211;&#x8BF4;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6211;+1&#x3002; &#x2014;&#x2014; &#x9C81;&#x8FC5;</p>
+</blockquote>
+</blockquote>
+<h1>4. &#x4EE3;&#x7801;&#x5F15;&#x7528;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x4E0B;&#x9762;&#x7528;&#x7684;&#x90FD;&#x662F;&#x53CD;&#x5F15;&#x53F7;&#xFF08;&#x952E;&#x76D8;&#x5DE6;&#x4E0A;&#x89D2;&#xFF0C;esc&#x4E0B;&#x9762;&#x90A3;&#x4E2A;&#xFF09;</span><br><span class="line"></span><br><span class="line">shell&#x547D;&#x4EE4;&#x793A;&#x4F8B;&#xFF1A;`rm -rf /`</span><br><span class="line"></span><br><span class="line">&#x4E3A;&#x4E86;&#x4E0D;&#x5F15;&#x8D77;&#x89E3;&#x6790;&#x9519;&#x8BEF;&#xFF0C;&#x4E0B;&#x9762;&#x7528;&apos;&#x4EE3;&#x66FF;&#x4E86;`(&#x65E0;&#x5948;&#x4E4B;&#x4E3E;)</span><br><span class="line">&apos;&apos;&apos;python</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">print(&quot;&#x4EE3;&#x7801;&#x5757;&#x6307;&#x5B9A;&#x8BED;&#x8A00;&#xFF0C;&#x53EF;&#x4EE5;&#x9AD8;&#x4EAE;&#x663E;&#x793A;&#x54E6;&quot;)</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+<p>shell&#x547D;&#x4EE4;&#x793A;&#x4F8B;&#xFF1A;<code>rm -rf /</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">print(<span class="string">&quot;&#x4EE3;&#x7801;&#x5757;&#x6307;&#x5B9A;&#x8BED;&#x8A00;&#xFF0C;&#x53EF;&#x4EE5;&#x9AD8;&#x4EAE;&#x663E;&#x793A;&#x54E6;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h1>5. &#x94FE;&#x63A5;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x8BA9;&#x6211;&#x4EEC;&#x5C4F;&#x4F4F;&#x547C;&#x5438;&#xFF0C;[&#x4E00;&#x8D77;&#x56DE;&#x5230;&#x6700;&#x521D;&#x7684;&#x8D77;&#x70B9;](#inner-link)&#x3002;&#x8FD9;&#x4E2A;&#x9700;&#x8981;&#x5728;&#x9875;&#x9762;&#x6307;&#x5B9A;&#x7684;&#x4F4D;&#x7F6E;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x951A;&#x70B9;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x8FD9;&#x6837;`&lt;a name=&apos;inner-line&apos;&gt;&lt;/a&gt;`</span><br><span class="line"></span><br><span class="line">&lt;https://ritchie.top&gt;</span><br><span class="line"></span><br><span class="line">&lt;god@ritchie.top&gt;</span><br><span class="line"></span><br><span class="line">&#x70B9;&#x51FB;&#x8FDB;&#x5165;[Ritchie&apos;s Blog](https://ritchie.top)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x6709;&#x60AC;&#x6D6E;&#x7684;&#x70B9;&#x51FB;&#x8FD9;&#x91CC;[Ritchie&apos;s Blog][any_flag]</span><br><span class="line"></span><br><span class="line">[any_flag]: https://ritchie.top &quot;Ritchie&apos;s Blog(optional)&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">any_flag&#x90FD;&#x61D2;&#x5F97;&#x5199;&#x7684;&#x70B9;&#x51FB;&#x8FD9;&#x91CC;[Ritchie&apos;s Blog][]</span><br><span class="line"></span><br><span class="line">[ritchie&apos;s blog]: https://ritchie.top &quot;Ritchie&apos;s Blog(optional)&quot;</span><br></pre></td></tr></table></figure>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x5C4F;&#x4F4F;&#x547C;&#x5438;&#xFF0C;<a href="#inner-link">&#x4E00;&#x8D77;&#x56DE;&#x5230;&#x6700;&#x521D;&#x7684;&#x8D77;&#x70B9;</a>&#x3002;&#x8FD9;&#x4E2A;&#x9700;&#x8981;&#x5728;&#x9875;&#x9762;&#x6307;&#x5B9A;&#x7684;&#x4F4D;&#x7F6E;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x951A;&#x70B9;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x8FD9;&#x6837;<code>&lt;a name=&apos;inner-line&apos;&gt;&lt;/a&gt;</code></p>
+<p><a href="https://ritchie.top" target="_blank" rel="noopener">https://ritchie.top</a></p>
+<p><a href="mailto:god@ritchie.top" target="_blank" rel="noopener">god@ritchie.top</a></p>
+<p>&#x70B9;&#x51FB;&#x8FDB;&#x5165;<a href="https://ritchie.top" target="_blank" rel="noopener">Ritchie&#x2019;s Blog</a></p>
+<p>&#x6709;&#x60AC;&#x6D6E;&#x7684;&#x70B9;&#x51FB;&#x8FD9;&#x91CC;<a href="https://ritchie.top" title="Ritchie&apos;s Blog(optional)" target="_blank" rel="noopener">Ritchie&#x2019;s Blog</a></p>
+<p>any_flag&#x90FD;&#x61D2;&#x5F97;&#x5199;&#x7684;&#x70B9;&#x51FB;&#x8FD9;&#x91CC;<a href="https://ritchie.top" title="Ritchie&apos;s Blog(optional)" target="_blank" rel="noopener">Ritchie&#x2019;s Blog</a></p>
+<h1>6. &#x56FE;&#x7247;</h1>
+<p>&#x7528;&#x6CD5;&#x540C;&#x63D2;&#x5165;&#x8D85;&#x94FE;&#x63A5;&#xFF0C;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x6700;&#x524D;&#x9762;&#x591A;&#x4E2A;&#x4E00;&#x4E2A;&#x611F;&#x53F9;&#x53F7;!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">markdown&#x76EE;&#x524D;&#x7684;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x8BED;&#x6CD5;&#xFF0C;&#x4E0D;&#x80FD;&#x8BBE;&#x7F6E;&#x56FE;&#x7247;&#x7684;&#x5177;&#x4F53;&#x53C2;&#x6570;&#xFF0C;&#x9700;&#x8981;html&#x6807;&#x7B7E;&#x914D;&#x5408;&#x652F;&#x6301;</span><br><span class="line"></span><br><span class="line">![&#x56FE;&#x7247;&#x7F3A;&#x5931;&#x65F6;&#x663E;&#x793A;&#x7684;&#x6587;&#x5B57;](https://ritchie.top/images/post/markdown.gif)</span><br><span class="line"></span><br><span class="line">![&#x798F;&#x5229;&#x4E0D;&#x89C1;&#x4E86;](https://ritchie.top/&#x798F;&#x5229;.jpeg)</span><br><span class="line"></span><br><span class="line">[![&#x5E26;&#x6709;&#x94FE;&#x63A5;&#x7684;&#x56FE;&#x7247;](https://ritchie.top/images/post/markdown2.gif)](http://ritchie.top)</span><br></pre></td></tr></table></figure>
+<p><img src="https://ritchie.top/images/post/markdown.gif" alt="&#x56FE;&#x7247;&#x7F3A;&#x5931;&#x65F6;&#x663E;&#x793A;&#x7684;&#x6587;&#x5B57;"></p>
+<p><img src="https://ritchie.top/%E7%A6%8F%E5%88%A9.jpeg" alt="&#x798F;&#x5229;&#x4E0D;&#x89C1;&#x4E86;"></p>
+<p><a href="http://ritchie.top" target="_blank" rel="noopener"><img src="https://ritchie.top/images/post/markdown2.gif" alt="&#x5E26;&#x6709;&#x94FE;&#x63A5;&#x7684;&#x56FE;&#x7247;"></a></p>
+<h1>7. &#x5217;&#x8868;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">- &#x65E0;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line">- &#x65E0;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line"></span><br><span class="line">    &gt; &#x65E0;&#x5E8F;&#x5217;&#x8868;&#x6BB5;&#x843D;</span><br><span class="line"></span><br><span class="line">    &#x65E0;&#x5E8F;&#x5217;&#x8868;&#x6BB5;&#x843D;</span><br><span class="line">- &#x65E0;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line">    - &#x65E0;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line">        - &#x65E0;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line">            - &#x65E0;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line"></span><br><span class="line">1. &#x6709;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line">2. &#x6709;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line"></span><br><span class="line">    &#x6709;&#x5E8F;&#x5217;&#x8868;&#x6BB5;&#x843D;</span><br><span class="line"></span><br><span class="line">    &#x6709;&#x5E8F;&#x5217;&#x8868;&#x6BB5;&#x843D;</span><br><span class="line">3. &#x6709;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line"></span><br><span class="line">    &gt; 1. &#x6709;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line">    &gt; 2. &#x6709;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line"></span><br><span class="line">4. &#x6709;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line">    - &#x65E0;&#x5E8F;&#x5217;&#x8868;</span><br><span class="line">        - &#x65E0;&#x5E8F;&#x5217;&#x8868;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>&#x65E0;&#x5E8F;&#x5217;&#x8868;</p>
+</li>
+<li>
+<p>&#x65E0;&#x5E8F;&#x5217;&#x8868;</p>
+<blockquote>
+<p>&#x65E0;&#x5E8F;&#x5217;&#x8868;&#x6BB5;&#x843D;</p>
+</blockquote>
+<p>&#x65E0;&#x5E8F;&#x5217;&#x8868;&#x6BB5;&#x843D;</p>
+</li>
+<li>
+<p>&#x65E0;&#x5E8F;&#x5217;&#x8868;</p>
+<ul>
+<li>&#x65E0;&#x5E8F;&#x5217;&#x8868;
+<ul>
+<li>&#x65E0;&#x5E8F;&#x5217;&#x8868;
+<ul>
+<li>&#x65E0;&#x5E8F;&#x5217;&#x8868;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>
+<p>&#x6709;&#x5E8F;&#x5217;&#x8868;</p>
+</li>
+<li>
+<p>&#x6709;&#x5E8F;&#x5217;&#x8868;</p>
+<p>&#x6709;&#x5E8F;&#x5217;&#x8868;&#x6BB5;&#x843D;</p>
+<p>&#x6709;&#x5E8F;&#x5217;&#x8868;&#x6BB5;&#x843D;</p>
+</li>
+<li>
+<p>&#x6709;&#x5E8F;&#x5217;&#x8868;</p>
+<blockquote>
+<ol>
+<li>&#x6709;&#x5E8F;&#x5217;&#x8868;</li>
+<li>&#x6709;&#x5E8F;&#x5217;&#x8868;</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p>&#x6709;&#x5E8F;&#x5217;&#x8868;</p>
+<ul>
+<li>&#x65E0;&#x5E8F;&#x5217;&#x8868;
+<ul>
+<li>&#x65E0;&#x5E8F;&#x5217;&#x8868;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h1>8. &#x6BB5;&#x843D;&#x548C;&#x6362;&#x884C;</h1>
+<p>&#x6BB5;&#x843D;&#x65E0;&#x9996;&#x884C;&#x7F29;&#x8FDB;&#xFF0C;&#x6BB5;&#x843D;&#x4E4B;&#x95F4;&#x901A;&#x8FC7;<strong>&#x4E00;&#x4E2A;&#x7A7A;&#x884C;</strong>&#x5206;&#x5272;&#xFF08;&#x591A;&#x4E2A;&#x7A7A;&#x884C;&#x6548;&#x679C;&#x4E5F;&#x662F;&#x4E00;&#x6837;&#x4E00;&#x6837;&#x7684;&#xFF09;</p>
+<p>&#x4E00;&#x4E2A;&#x6BB5;&#x843D;&#x5185;&#x7684;&#x6362;&#x884C;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x4E00;&#x884C;&#x7684;&#x7ED3;&#x5C3E;&#x6DFB;&#x52A0;<strong>&#x4E24;&#x4E2A;&#x7A7A;&#x683C;</strong>&#xFF08;&#x591A;&#x5199;&#x51E0;&#x4E2A;&#x7A7A;&#x683C;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#xFF09;</p>
+<h1>9. &#x8F6C;&#x4E49;&#x7B26;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">**&#x8FD9;&#x662F;&#x4E2A;&#x7C97;&#x4F53;**</span><br><span class="line"></span><br><span class="line">\*\*&#x8FD9;&#x4E0D;&#x662F;&#x4E2A;&#x7C97;&#x4F53;\*\*</span><br></pre></td></tr></table></figure>
+<p><strong>&#x8FD9;&#x662F;&#x4E2A;&#x7C97;&#x4F53;</strong></p>
+<p>**&#x8FD9;&#x4E0D;&#x662F;&#x4E2A;&#x7C97;&#x4F53;**</p>
+<h1>10. &#x5206;&#x5272;&#x7EBF;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x7741;&#x5927;&#x773C;&#xFF0C;&#x77A7;&#x4ED4;&#x7EC6;&#xFF0C;&#x4E0B;&#x9762;&#x80AF;&#x5B9A;&#x6709;&#x6761;&#x5206;&#x5272;&#x7EBF;</span><br><span class="line"></span><br><span class="line">* * * (&#x6700;&#x5C11;&#x4E09;&#x4E2A;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1>11. &#x516C;&#x5F0F;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$$ y = \sum_{i=n}{x_i} $$</span><br><span class="line"></span><br><span class="line">$$</span><br><span class="line">\left[</span><br><span class="line">\begin{matrix}</span><br><span class="line">   1 &amp; 2 &amp; 3 \\\\</span><br><span class="line">   4 &amp; 5 &amp; 6 \\\\</span><br><span class="line">   7 &amp; 8 &amp; 9</span><br><span class="line">\end{matrix}</span><br><span class="line">\right] </span><br><span class="line">\tag{n}</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<p>$$ y = \sum_{i=n}{x_i} $$</p>
+<p>$$<br>
+\left[<br>
+\begin{matrix}<br>
+1 &amp; 2 &amp; 3 \\<br>
+4 &amp; 5 &amp; 6 \\<br>
+7 &amp; 8 &amp; 9<br>
+\end{matrix}<br>
+\right]<br>
+\tag{n}<br>
+$$</p>
+<h1>12. &#x8868;&#x683C;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">| &#x9ED8;&#x8BA4;&#x5BF9;&#x9F50; | &#x5C45;&#x4E2D;&#x5BF9;&#x9F50;  | &#x53F3;&#x5BF9;&#x9F50; |</span><br><span class="line">| --------|:-------:| -----:|</span><br><span class="line">| &#x5BF9;&#x9F50;&#x7684;&#x77ED;&#x7EBF;&#x6700;&#x5C11;&#x8981;&#x5199;&#x4E09;&#x4E2A;| &#x540C;&#x5217;&#x5185;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;&#x4E00;&#x81F4;  | &#x70EB;&#x70EB;&#x70EB; |</span><br><span class="line">| &#x5217;&#x5BBD;&#x662F;&#x6839;&#x636E;&#x5185;&#x5BB9;&#x81EA;&#x9002;&#x5E94;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x53EF;&#x4EE5;&#x5F88;&#x5BBD;| **&#x4F7F;&#x7528;&#x6587;&#x672C;&#x88C5;&#x9970;**|&#x4E0D;&#x77E5;&#x9053;&#x5199;&#x5565;&#x4E86;|</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>&#x9ED8;&#x8BA4;&#x5BF9;&#x9F50;</th>
+<th style="text-align:center">&#x5C45;&#x4E2D;&#x5BF9;&#x9F50;</th>
+<th style="text-align:right">&#x53F3;&#x5BF9;&#x9F50;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x5BF9;&#x9F50;&#x7684;&#x77ED;&#x7EBF;&#x6700;&#x5C11;&#x8981;&#x5199;&#x4E09;&#x4E2A;</td>
+<td style="text-align:center">&#x540C;&#x5217;&#x5185;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;&#x4E00;&#x81F4;</td>
+<td style="text-align:right">&#x70EB;&#x70EB;&#x70EB;</td>
+</tr>
+<tr>
+<td>&#x5217;&#x5BBD;&#x662F;&#x6839;&#x636E;&#x5185;&#x5BB9;&#x81EA;&#x9002;&#x5E94;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x53EF;&#x4EE5;&#x5F88;&#x5BBD;</td>
+<td style="text-align:center"><strong>&#x4F7F;&#x7528;&#x6587;&#x672C;&#x88C5;&#x9970;</strong></td>
+<td style="text-align:right">&#x4E0D;&#x77E5;&#x9053;&#x5199;&#x5565;&#x4E86;</td>
+</tr>
+</tbody>
+</table>
+<h1>13. &#x8868;&#x60C5;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x4F9D;&#x8D56;&#x63D2;&#x4EF6;&#xFF1A;hexo-article-emoji</span><br><span class="line">&#x8868;&#x60C5;&#x5E93;&#xFF1A;/node-modules/hexo-article-emoji/lib/data/full.json</span><br><span class="line">&#x7528;&#x6CD5;&#xFF1A;</span><br><span class="line">    &#x7ED9;&#x5927;&#x7237;&#x4E50;&#x4E00;&#x4E2A;&#xFF01;:smile: :smiley: :grinning:</span><br></pre></td></tr></table></figure>
+<p>&#x7ED9;&#x5927;&#x7237;&#x4E50;&#x4E00;&#x4E2A;&#xFF01;
+<img width="20" height="20" class="emoji nofancybox" title=":smile:" alt="&#x1F604;" src="/images/emoji/smile.png" style="display:inline;
+padding:0px;
+vertical-align:middle;
+">
+ 
+<img width="20" height="20" class="emoji nofancybox" title=":smiley:" alt="&#x1F603;" src="/images/emoji/smiley.png" style="display:inline;
+padding:0px;
+vertical-align:middle;
+">
+ 
+<img width="20" height="20" class="emoji nofancybox" title=":grinning:" alt="&#x1F600;" src="/images/emoji/grinning.png" style="display:inline;
+padding:0px;
+vertical-align:middle;
+">
+</p>
+<h1>14. &#x811A;&#x6CE8;</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x6240;&#x6709;&#x7684;&#x811A;&#x6CE8;&#x4F1A;&#x81EA;&#x52A8;&#x653E;&#x5230;&#x6574;&#x7BC7;&#x6587;&#x7AE0;&#x7684;&#x672B;&#x5C3E;</span><br><span class="line"></span><br><span class="line">&#x5B50;&#x66F0;&#xFF1A;&#x9760;&#xFF01;&#x70B9;&#x811A;&#x6CE8;&#x80FD;&#x8DF3;&#x8F6C;[^1]</span><br><span class="line"></span><br><span class="line">[^1]: &#x300A;&#x8BBA;&#x8BED;&#x300B;</span><br></pre></td></tr></table></figure>
+<p>&#x5B50;&#x66F0;&#xFF1A;&#x9760;&#xFF01;&#x70B9;&#x811A;&#x6CE8;&#x80FD;&#x8DF3;&#x8F6C;<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<h1>15. &#x603B;&#x7ED3;</h1>
+<p>&#x524D;&#x9762;&#x5BF9;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x7684;&#x8BED;&#x6CD5;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x7684;&#x793A;&#x4F8B;&#x603B;&#x7ED3;&#xFF0C;&#x540E;&#x9762;&#x518D;&#x6709;&#x65B0;&#x7684;&#x9700;&#x6C42;&#x518D;&#x6765;&#x8865;&#x5145;&#x3002;&#x5148;&#x8FD9;&#x6837;&#xFF01;</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>&#x300A;&#x8BBA;&#x8BED;&#x300B; <a href="#fnref1" class="footnote-backref">&#x21A9;</a></p>
+</li>
+</ol>
+</section>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://www.ritchie.top/2019/09/08/simple-markdown-syntax/" data-id="ck4o9ea690003e3s6dy1rvbqv" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACH0lEQVR42u3aS3LCMBAFQO5/aecABHhvRFJlqbVKEYHVXkxpPo9HvK6n9fzfV/uTX26/NVwYGBi3ZVxv1/sHrBz0/bPy/RgYGOcwkse3cW8lWOdnw8DAwJjtSS6LCRUDAwNjhdEetA3NGBgYGLMktj1EUoDLk+ev5eIYGBg3ZOSp6f///Sf9DQwMjFsxrnK1BbU2fA9PhYGBsTWjbUOuF+Daclt+HgwMjF0Z64F1dug8MY5eNAYGxgGM5PNZsazNNPML5S8BFwMD4wBGG3Dzka+8fDZ7KRgYGCcwVtqW7UUzv/DlIR4DA2NvRlIsaxPX/EB56luPWWBgYGzHaMv9bdK7Qk2unhgYGHszvltEy1uVs/f9odyGgYGxKWM2SNpeH9vL4gyMgYGxK2M2MJG3Htsw2k5TYGBgnMOYkWYl/llJ7gvDFhgYGFsw1i+LScszCb7tiAYGBsYJjDwgrrQBvjWK8TILx8DA2JTRtg/zI64E9PYTDAyM0xgrCWebyrbFuw+hHwMD4wBGnmTOhi3Wm5rRPRcDA2NrRjuStdJ0rAtqyXcxMDA2ZVzlyot07Z5Z8Q4DA+MExnq0nl0c1xuow5CNgYFxW0YeZNvA1xby2pELDAyM0xjrga/Fz656H3JxDAwMjLh5kCexye9EVAwMDIx4Tw6etRlevhoMDIwDGLMhraSUP0tZ69E0DAyMrRl56jgrz7XtyTzIYmBgHMD4AV6A0T9Xs+rBAAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/markdown/">markdown</a></div><div class="post-nav"><a class="pre" href="/2019/09/15/paper-reading-youtube-dnn-recommendation/">【论文小品】Deep neural networks for YouTube recommendations</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css?v=0.0.0"><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=0.0.0"></script><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js?v=0.0.0"></script><script>var gitalk = new Gitalk({
+  clientID: 'e1d9a23bff9cf37a908f',
+  clientSecret: 'e940ee66119d68ddc9e557b57925f146ff8e180f',
+  repo: 'ritchietop.github.io',
+  owner: 'ritchietop',
+  admin: ['ritchietop'],
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('container')
+</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/paper/">paper</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tensorflow/">tensorflow</a><span class="category-list-count">2</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/tensorflow-tfrecord-sequenceExample-spark-feature/" style="font-size: 15px;">tensorflow tfrecord sequenceExample spark feature</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/dnn-recommendation/" style="font-size: 15px;">dnn recommendation</a> <a href="/tags/tensorflow-tfrecord-sequenceExample/" style="font-size: 15px;">tensorflow tfrecord sequenceExample</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/12/25/tensorflow-tfrecord-process/">【tensorflow】TFRecord数据读写</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/24/tensorflow-tfrecord-basic_datastruct/">【tensorflow】TFRecord数据结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/15/paper-reading-youtube-dnn-recommendation/">【论文小品】Deep neural networks for YouTube recommendations</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/08/simple-markdown-syntax/">简明Markdown语法</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://tf.wiki/" title="简单粗暴 TensorFlow 2.0" target="_blank">简单粗暴 TensorFlow 2.0</a><ul></ul><a href="https://keras.io/zh/" title="Keras: 基于 Python 的深度学习库" target="_blank">Keras: 基于 Python 的深度学习库</a><ul></ul><a href="https://leetcode-cn.com/" title="力扣（LeetCode）" target="_blank">力扣（LeetCode）</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Ritchie's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
