@@ -1,0 +1,263 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="python, scala, spark, hive, hbase, hadoop, tensorflow, flink, 机器学习, 深度学习, 算法"><title>【tensorflow】Dataset简明教程 | Ritchie's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '87868a9c378cabc27812ae2d1ebfbb13';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();</script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">【tensorflow】Dataset简明教程</h1><a id="logo" href="/.">Ritchie's Blog</a><p class="description">点滴记录，技术提升进程</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-list"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a><a href="/timeline/"><i class="fa fa-history"> 大事记</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">【tensorflow】Dataset简明教程</h1><div class="post-meta">Dec 28, 2019<span> | </span><span class="category"><a href="/categories/tensorflow/">tensorflow</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><div class="post-content"><p>Dataset&#x662F;Tensorflow&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x5957;&#x9AD8;&#x6548;&#x7684;&#x6570;&#x636E;&#x52A0;&#x8F7D;&#x5DE5;&#x5177;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5229;&#x7528;Dataset&#x4EE5;&#x7B80;&#x5355;&#x53EF;&#x590D;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x6784;&#x5EFA;&#x590D;&#x6742;&#x7684;&#x8F93;&#x5165;Pipeline&#x3002;</p>
+<p>&#x81EA;Tensorflow2.0&#x4E4B;&#x540E;&#xFF0C;Dataset&#x7684;API&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x7684;&#x7B80;&#x5355;&#x6613;&#x7528;&#x3002;&#x7528;&#x8FC7;&#x7684;Tensorflow1.x&#x7684;&#x670B;&#x53CB;&#x53EF;&#x80FD;&#x4F1A;&#x77E5;&#x9053;&#xFF0C;Dataset&#x4E4B;&#x524D;&#x9700;&#x8981;&#x4F9D;&#x8D56;Iterator&#x6765;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x8FED;&#x4EE3;&#x3002;&#x4E3A;&#x4E86;&#x63D0;&#x4F9B;Tensorflow&#x7684;&#x6613;&#x7528;&#x6027;&#xFF0C;2.0&#x7248;&#x672C;&#x5F00;&#x59CB;&#xFF0C;Dataset&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;for&#x8BED;&#x53E5;&#x6765;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x904D;&#x5386;&#xFF0C;&#x4F7F;&#x5F97;Dataset&#x66F4;&#x52A0;&#x7684;pythonic&#x3002;</p>
+<p>&#x7B80;&#x5355;&#x3001;&#x65B9;&#x4FBF;&#x3001;&#x5F3A;&#x5927;&#xFF0C;&#x4F60;&#x4E0D;&#x9009;&#x62E9;&#x4F7F;&#x7528;Dataset&#xFF0C;&#x6211;&#x4E0D;&#x4FE1;&#x3002;</p>
+<a id="more"></a>
+<h2>Dataset&#x521B;&#x5EFA;</h2>
+<h3>&#x521B;&#x5EFA;&#x5355;&#x5143;&#x7D20;dataset</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dataset_single = tf.data.Dataset.from_tensors([[<span class="number">1</span>], [<span class="number">2</span>], [<span class="number">3</span>], [<span class="number">4</span>], [<span class="number">5</span>]])</span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> dataset_single:</span><br><span class="line">    print(element)</span><br><span class="line">print(dataset_single.element_spec)  <span class="comment"># TensorSpec(shape=(5, 1), dtype=tf.int32, name=None)</span></span><br></pre></td></tr></table></figure>
+<h3>&#x521B;&#x5EFA;&#x591A;&#x5143;&#x7D20;dataset</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dataset_multi = tf.data.Dataset.from_tensor_slices([[<span class="number">1</span>], [<span class="number">2</span>], [<span class="number">3</span>], [<span class="number">4</span>], [<span class="number">5</span>]])</span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> dataset_multi:</span><br><span class="line">    print(element)</span><br><span class="line">print(dataset_multi.element_spec)  <span class="comment"># TensorSpec(shape=(1,), dtype=tf.int32, name=None)</span></span><br></pre></td></tr></table></figure>
+<h3>&#x4ECE;&#x751F;&#x6210;&#x5668;&#x521B;&#x5EFA;dataset</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">generator</span><span class="params">(init_value, max_step)</span>:</span></span><br><span class="line">    i = init_value</span><br><span class="line">    <span class="keyword">while</span> i &lt; max_step:</span><br><span class="line">        <span class="keyword">yield</span> [[i + <span class="number">1</span>], [i + <span class="number">2</span>], [i + <span class="number">3</span>]], [i]</span><br><span class="line">        i *= <span class="number">2</span></span><br><span class="line">dataset_gen = tf.data.Dataset.from_generator(</span><br><span class="line">    generator=generator, args=[<span class="number">2</span>, <span class="number">10</span>], output_types=(tf.float32, tf.int64), output_shapes=((<span class="number">3</span>, <span class="number">1</span>), (<span class="number">1</span>,)))</span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> dataset_gen:</span><br><span class="line">    print(element)</span><br><span class="line">print(dataset_gen.element_spec)  <span class="comment"># TensorSpec(shape=(3, 1), dtype=tf.float32, name=None)</span></span><br></pre></td></tr></table></figure>
+<h3>&#x4EFF;range&#x521B;&#x5EFA;dataset</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dataset_range = tf.data.Dataset.range(<span class="number">10</span>, <span class="number">100</span>, <span class="number">5</span>)</span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> dataset_range:</span><br><span class="line">    print(element)</span><br><span class="line">print(dataset_range.element_spec)  <span class="comment"># TensorSpec(shape=(), dtype=tf.int64, name=None)</span></span><br></pre></td></tr></table></figure>
+<h3>&#x8DEF;&#x5F84;&#x6B63;&#x5219;&#x521B;&#x5EFA;dataset</h3>
+<p>&#x6839;&#x636E;&#x6307;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x6837;&#x5F0F;&#xFF0C;&#x5217;&#x51FA;&#x6240;&#x6709;&#x5339;&#x914D;&#x7684;&#x8DEF;&#x5F84;&#x3002;&#x901A;&#x8FC7;shuffle&#x786E;&#x5B9A;&#x662F;&#x5426;&#x6253;&#x6563;&#x8F93;&#x51FA;&#x7ED3;&#x679C;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dataset_files = tf.data.Dataset.list_files(file_pattern=<span class="string">&quot;path/*.py&quot;</span>, shuffle=<span class="literal">None</span>, seed=<span class="literal">None</span>)</span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> dataset_files:</span><br><span class="line">    print(element)</span><br><span class="line">print(dataset_files.element_spec)</span><br></pre></td></tr></table></figure>
+<h3>&#x4EFF;zip&#x521B;&#x5EFA;dataset</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dataset_zip = tf.data.Dataset.zip(datasets=[tf.data.Dataset.range(<span class="number">3</span>), tf.data.Dataset.range(<span class="number">4</span>, <span class="number">7</span>)])</span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> dataset_zip:</span><br><span class="line">    print(element)</span><br><span class="line">print(dataset_zip.element_spec)</span><br></pre></td></tr></table></figure>
+<h3>&#x4ECE;&#x6587;&#x4EF6;&#x521B;&#x5EFA;dataset</h3>
+<blockquote>
+<p>&#x884C;&#x6587;&#x672C;&#x683C;&#x5F0F;</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">text_line_path = <span class="string">&quot;path/text&quot;</span></span><br><span class="line">dataset_text = tf.data.TextLineDataset(</span><br><span class="line">    filenames=[text_line_path], compression_type=<span class="string">&quot;&quot;</span>, buffer_size=<span class="literal">None</span>, num_parallel_reads=<span class="literal">None</span>)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> dataset_text:</span><br><span class="line">    print(line)</span><br><span class="line">print(dataset_text.element_spec)  <span class="comment"># TensorSpec(shape=(), dtype=tf.string, name=None)</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>TFRecord&#x683C;&#x5F0F;</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tfrecord_path = <span class="string">&quot;path/tfrecord&quot;</span></span><br><span class="line">dataset_tfrecord = tf.data.TFRecordDataset(</span><br><span class="line">    filenames=[tfrecord_path], compression_type=<span class="string">&quot;&quot;</span>, buffer_size=<span class="literal">None</span>, num_parallel_reads=<span class="literal">None</span>)</span><br><span class="line"><span class="keyword">for</span> record <span class="keyword">in</span> dataset_tfrecord:</span><br><span class="line">    example = tf.io.parse_single_example(record, features={<span class="string">&quot;A&quot;</span>: tf.io.FixedLenFeature(shape=(<span class="number">1</span>,), dtype=tf.int64)})</span><br><span class="line">    print(example)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x56FA;&#x5B9A;&#x957F;&#x5EA6;bytes&#x683C;&#x5F0F;</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">binary_path = <span class="string">&quot;path/binary&quot;</span></span><br><span class="line"><span class="comment"># &#x8FD9;&#x91CC;&#x8981;&#x6C42;&#x6587;&#x4EF6;&#x7684;&#x603B;bytes&#x6570;&#x5728;&#x51CF;&#x53BB;header_bytes&#x548C;footer_bytes&#x5FFD;&#x7565;&#x7684;&#x957F;&#x5EA6;&#x4E4B;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x662F;record_bytes&#x7684;&#x6574;&#x6570;&#x500D;</span></span><br><span class="line">dataset_binary = tf.data.FixedLengthRecordDataset(</span><br><span class="line">    filenames=[binary_path], record_bytes=<span class="number">10</span>, header_bytes=<span class="number">6</span>, footer_bytes=<span class="number">4</span>, buffer_size=<span class="literal">None</span>,</span><br><span class="line">    compression_type=<span class="string">&quot;&quot;</span>, num_parallel_reads=<span class="literal">None</span>)</span><br><span class="line"><span class="keyword">for</span> bytes_record <span class="keyword">in</span> dataset_binary:</span><br><span class="line">    print(bytes_record)</span><br></pre></td></tr></table></figure>
+<h2>Dataset&#x64CD;&#x4F5C;</h2>
+<p>&#x5728;&#x4ECB;&#x7ECD;&#x4E0B;&#x9762;&#x7684;&#x51FD;&#x6570;&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x660E;&#x786E;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x6240;&#x5904;&#x7406;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5747;&#x8868;&#x793A;&#x7684;&#x662F;&#x8BE5;&#x64CD;&#x4F5C;&#x4E0A;&#x4E00;&#x6B65;&#x6BCF;&#x6B21;&#x8FED;&#x4EE3;&#x6240;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x5355;&#x5143;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x66F4;&#x597D;&#x7684;&#x7406;&#x89E3;&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x542B;&#x4E49;&#xFF0C;&#x660E;&#x786E;&#x5176;&#x6240;&#x5904;&#x7406;&#x7684;&#x5143;&#x7D20;&#x5177;&#x4F53;&#x6307;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x662F;&#x4E00;&#x4EF6;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x4E8B;&#x60C5;&#x3002;</p>
+<ul>
+<li>
+<p>dataset.enumerate(start: int)</p>
+<p>&#x4E3A;&#x8BB0;&#x5F55;&#x6DFB;&#x52A0;index&#xFF08;&#x5305;&#x542B;start&#xFF09;&#xFF0C;&#x8BB0;&#x5F55;&#x53D8;&#x6210;&#x4E86;tuple&#x7C7B;&#x578B;(index_tensor, tensor)</p>
+</li>
+<li>
+<p>dataset.take(count: int)</p>
+<p>&#x622A;&#x53D6;count&#x4E2A;&#x8BB0;&#x5F55;</p>
+</li>
+<li>
+<p>dataset.apply(transformation_func=None)</p>
+<p>&#x5BF9;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x96C6;&#x5E94;&#x7528;transformation_func</p>
+</li>
+<li>
+<p>dataset.batch(batch_size: int, drop_remainder: bool)</p>
+<p>&#x4E3A;&#x6570;&#x636E;&#x589E;&#x52A0;batch&#x7EF4;&#x5EA6;&#xFF0C;&#x5982;&#x679C;&#x603B;&#x6761;&#x6570;&#x4E0D;&#x80FD;&#x6574;&#x9664;batch_size&#xFF0C;&#x901A;&#x8FC7;drop_remainder&#x786E;&#x5B9A;&#x662F;&#x5426;&#x820D;&#x5F03;&#x672B;&#x5C3E;&#x8BB0;&#x5F55;</p>
+</li>
+<li>
+<p>dataset.cache(filename: str)</p>
+<p>&#x5C06;&#x6570;&#x636E;&#x7F13;&#x5B58;&#x5230;&#x6307;&#x5B9A;filename&#x4E2D;&#xFF0C;&#x4E0D;&#x6307;&#x5B9A;filename&#xFF0C;&#x8868;&#x793A;&#x7F13;&#x5B58;&#x5230;&#x5185;&#x5B58;&#x4E2D;</p>
+</li>
+<li>
+<p>dataset.concatenate(dataset: Dataset)</p>
+<p>&#x6570;&#x636E;&#x96C6;&#x4E32;&#x8054;&#x5408;&#x5E76;&#xFF0C;&#x5C06;&#x53C2;&#x6570;&#x4E2D;&#x7684;dataset&#x62FC;&#x63A5;&#x5230;&#x539F;dataset&#x7684;&#x540E;&#x9762;</p>
+</li>
+<li>
+<p>dataset.filter(predicate: =&gt; bool)</p>
+<p>&#x8FC7;&#x6EE4;&#x6570;&#x636E;&#xFF0C;predicate&#x9700;&#x8981;&#x8FD4;&#x56DE;bool&#x503C;&#xFF0C;True&#x8868;&#x793A;&#x4E0D;&#x8FC7;&#x6EE4;&#xFF0C;False&#x8868;&#x793A;&#x8FC7;&#x6EE4;</p>
+</li>
+<li>
+<p>dataset.flat_map(map_func=None)</p>
+<p>&#x540C;map&#xFF0C;&#x4E0D;&#x8FC7;&#x4F1A;&#x5C06;&#x7ED3;&#x679C;&#x5C55;&#x5F00;</p>
+</li>
+<li>
+<p>dataset.interleave(map_func: =&gt; Dataset, cycle_length: int, block_length: int, num_parallel_calls: int)</p>
+<ul>
+<li>map_func: &#x5C06;dataset&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;Dataset</li>
+<li>cycle_lenght: &#x8BBE;&#x7F6E;&#x540C;&#x65F6;&#x5904;&#x7406;dataset&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x5373;&#x6BCF;&#x6B21;&#x540C;&#x65F6;&#x8BFB;&#x53D6;&#x591A;&#x5C11;&#x4E2A;dataset&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x6267;&#x884C;map_func&#x65B9;&#x6CD5;&#x3002;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#x4E3A;&#x5F53;&#x524D;&#x53EF;&#x7528;&#x7684;cpu&#x6838;&#x6570;</li>
+<li>block_length: &#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x4EA7;&#x751F;&#x7684;Dataset&#x6BCF;&#x6B21;&#x8F93;&#x51FA;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;</li>
+<li>num_parallel_calls: &#x8BBE;&#x7F6E;&#x5E76;&#x53D1;&#x5EA6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E0D;&#x5E76;&#x53D1;&#x6267;&#x884C;</li>
+</ul>
+<p>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x903B;&#x8F91;&#xFF0C;&#x6211;&#x7528;&#x961F;&#x5217;&#x7684;&#x601D;&#x8DEF;&#x6A21;&#x62DF;&#x4E00;&#x4E0B;&#x3002;<br>
+&#x6267;&#x884C;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ol>
+<li>&#x4ECE;dataset&#x4E2D;&#x8BFB;&#x53D6;cycle_length&#x4E2A;&#x5143;&#x7D20;</li>
+<li>&#x8C03;&#x5EA6;map_func&#x65B9;&#x6CD5;&#xFF0C;&#x4EA7;&#x751F;cycle_length&#x4E2A;Dataset</li>
+<li>&#x628A;cycle_length&#x4E2A;Dataset&#x653E;&#x5230;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x91CC;</li>
+<li>&#x5148;&#x8BFB;&#x53D6;&#x961F;&#x9996;&#x7684;Dataset&#xFF0C;&#x904D;&#x5386;&#x8F93;&#x51FA;block_length&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x7136;&#x540E;&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;Dataset&#x653E;&#x5230;&#x961F;&#x5217;&#x7684;&#x672B;&#x5C3E;</li>
+<li>&#x5FAA;&#x73AF;&#x6267;&#x884C;4&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x76F4;&#x5230;&#x6BCF;&#x4E2A;Dataset&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x53EF;&#x80FD;&#x4E0D;&#x8DB3;block_length&#x4E2A;&#xFF0C;&#x90A3;&#x5C31;&#x6709;&#x591A;&#x5C11;&#x7B97;&#x591A;&#x5C11;&#x7684;&#x8F93;&#x51FA;</li>
+<li>&#x5230;&#x8FD9;&#x91CC;&#x4ECE;&#x7B2C;1&#x6B65;&#x4E2D;&#x8BFB;&#x53D6;&#x7684;cycle_length&#x4E2A;&#x5143;&#x7D20;&#x5C31;&#x904D;&#x5386;&#x5B8C;&#x6210;&#x4E86;</li>
+<li>&#x56DE;&#x5230;&#x7B2C;1&#x6B65;&#x91CD;&#x65B0;&#x5F00;&#x59CB;&#x4E0B;&#x4E00;&#x8F6E;</li>
+</ol>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dataset = tf.data.Dataset.range(<span class="number">5</span>)</span><br><span class="line">dataset = dataset.interleave(</span><br><span class="line">    map_func=<span class="keyword">lambda</span> x: tf.data.Dataset.from_tensors(x).repeat(<span class="number">6</span>),</span><br><span class="line">    cycle_length=<span class="number">3</span>,</span><br><span class="line">    block_length=<span class="number">4</span>)</span><br><span class="line"><span class="keyword">for</span> record <span class="keyword">in</span> dataset:</span><br><span class="line">    print(record)</span><br></pre></td></tr></table></figure>
+<p>Output&#xFF1A;[0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 0, 0, 1, 1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 4, 4]</p>
+<p>&#x53EF;&#x4EE5;&#x4EFF;&#x7167;&#x4E0A;&#x9762;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x63A8;&#x6F14;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x4EE3;&#x7801;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;</p>
+</li>
+<li>
+<p>dataset.map(map_func=None, num_parallel_calls: int)</p>
+<p>&#x529F;&#x80FD;&#x540C;python&#x7684;map&#x3002;&#x4E3A;&#x6BCF;&#x6761;&#x8BB0;&#x5F55;&#x5E94;&#x7528;map_func&#x65B9;&#x6CD5;&#xFF0C;&#x901A;&#x8FC7;num_parallel_calls&#x8BBE;&#x7F6E;&#x5E76;&#x53D1;&#x5EA6;&#xFF0C;None&#x8868;&#x793A;&#x4E32;&#x884C;&#x6267;&#x884C;&#x3002;</p>
+</li>
+<li>
+<p>dataset.options()</p>
+<p>&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x96C6;&#x548C;&#x8F93;&#x5165;&#x7684;option</p>
+</li>
+<li>
+<p>dataset.padded_batch(batch_size: int, padded_shapes, padding_values=None, drop_remainder: bool)</p>
+<ul>
+<li>batch_size: &#x8BBE;&#x7F6E;&#x6279;&#x6B21;&#x5927;&#x5C0F;</li>
+<li>padded_shapes: &#x6839;&#x636E;dataset&#x4E2D;&#x7684;&#x8BB0;&#x5F55;&#x7279;&#x5F81;&#xFF0C;&#x4E3A;&#x6BCF;&#x4E2A;&#x7EF4;&#x5EA6;&#x8BBE;&#x7F6E;&#x6269;&#x5145;&#x7684;&#x6700;&#x5927;&#x7EF4;&#x5EA6;&#x5927;&#x5C0F;&#xFF0C;None&#x8868;&#x793A;&#x4F7F;&#x7528;&#x5F53;&#x524D;&#x6279;&#x6B21;&#x5185;&#x6240;&#x4EE5;&#x8BB0;&#x5F55;&#x7684;&#x6700;&#x5927;&#x7EF4;&#x5EA6;&#x5927;&#x5C0F;</li>
+<li>padding_values: &#x8BBE;&#x7F6E;&#x586B;&#x5145;&#x7684;&#x6570;&#x503C;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x9700;&#x8981;&#x4E3A;&#x6807;&#x91CF;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x8981;&#x4FDD;&#x6301;&#x6570;&#x503C;&#x7C7B;&#x578B;&#x4E0E;dataset&#x6570;&#x503C;&#x7C7B;&#x578B;&#x7684;&#x4E00;&#x81F4;&#x6027;</li>
+<li>drop_remainder: &#x5269;&#x4F59;&#x8BB0;&#x5F55;&#x4E0D;&#x8DB3;&#x4E00;&#x4E2A;&#x6279;&#x6B21;&#x65F6;&#xFF0C;&#x662F;&#x5426;&#x8F93;&#x51FA;</li>
+</ul>
+<p>&#x4F7F;&#x7528;batch&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;dataset&#x4E2D;&#x6240;&#x6709;&#x8BB0;&#x5F55;&#x90FD;&#x5177;&#x6709;&#x76F8;&#x540C;&#x7684;shape&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x7684;dataset&#x4E2D;&#x5B58;&#x50A8;&#x7684;&#x8BB0;&#x5F55;&#x7684;shape&#x5E76;&#x4E0D;&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;padded_batch&#x5B9E;&#x73B0;batch&#x7684;&#x6548;&#x679C;</p>
+<p>&#x5979;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x662F;&#x5BF9;&#x9700;&#x8981;batch&#x5728;&#x4E00;&#x8D77;&#x7684;shape&#x4E0D;&#x540C;&#x7684;&#x8BB0;&#x5F55;&#xFF0C;&#x901A;&#x8FC7;padded_shapes&#x5728;&#x5404;&#x7EF4;&#x5EA6;&#x6307;&#x5B9A;&#x7684;&#x6269;&#x5145;&#x7EF4;&#x5EA6;&#x8FDB;&#x884C;&#x6269;&#x5145;&#xFF0C;&#x586B;&#x5145;&#x7684;&#x503C;&#x901A;&#x8FC7;padding_values&#x6307;&#x5B9A;</p>
+<p>padded_batch&#x80FD;&#x591F;&#x5B9E;&#x73B0;&#x4E0D;&#x540C;shape&#x8BB0;&#x5F55;&#x7684;batch&#x3002;&#x4F46;&#x662F;&#xFF0C;dataset&#x6BCF;&#x6B21;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x7684;shape&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x76F8;&#x540C;</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dataset = tf.data.Dataset.range(<span class="number">5</span>).map(<span class="keyword">lambda</span> tensor: tf.fill([tensor, tensor], tf.cast(tensor, dtype=tf.int32)))</span><br><span class="line">dataset = dataset.padded_batch(<span class="number">3</span>, padded_shapes=[<span class="literal">None</span>, <span class="number">4</span>], padding_values=tf.constant(value=<span class="number">-1</span>, dtype=tf.int32))</span><br><span class="line"><span class="keyword">for</span> record <span class="keyword">in</span> dataset:</span><br><span class="line">    print(record)</span><br></pre></td></tr></table></figure>
+<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">tf.Tensor(</span><br><span class="line">[[[-1 -1 -1 -1]</span><br><span class="line">[-1 -1 -1 -1]]</span><br><span class="line"></span><br><span class="line">[[ 1 -1 -1 -1]</span><br><span class="line">[-1 -1 -1 -1]]</span><br><span class="line"></span><br><span class="line">[[ 2  2 -1 -1]</span><br><span class="line">[ 2  2 -1 -1]]], shape=(3, 2, 4), dtype=int32)</span><br><span class="line"></span><br><span class="line">tf.Tensor(</span><br><span class="line">[[[ 3  3  3 -1]</span><br><span class="line">[ 3  3  3 -1]</span><br><span class="line">[ 3  3  3 -1]</span><br><span class="line">[-1 -1 -1 -1]]</span><br><span class="line"></span><br><span class="line">[[ 4  4  4  4]</span><br><span class="line">[ 4  4  4  4]</span><br><span class="line">[ 4  4  4  4]</span><br><span class="line">[ 4  4  4  4]]], shape=(2, 4, 4), dtype=int32)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>dataset.prefetch(buffer_size: int)</p>
+<p>&#x5F00;&#x542F;&#x6570;&#x636E;&#x9884;&#x8BFB;&#x53D6;&#x673A;&#x5236;&#x3002;buffer_size&#x8BBE;&#x7F6E;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x8BBE;&#x7F6E;&#x4E3A;None&#x6216;&#x8005;-1&#xFF0C;&#x8868;&#x793A;&#x81EA;&#x52A8;&#x914D;&#x7F6E;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;</p>
+</li>
+<li>
+<p>dataset.reduce(initial_state=None, reduce_func=None)</p>
+<p>&#x529F;&#x80FD;&#x540C;python&#x7684;reduce&#x3002;&#x5C06;&#x6BCF;&#x6761;&#x8BB0;&#x5F55;&#x901A;&#x8FC7;reduce_func&#x4F9D;&#x6B21;&#x6267;&#x884C;&#xFF0C;&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x4E00;&#x6761;&#x8BB0;&#x5F55;&#x3002;</p>
+</li>
+<li>
+<p>dataset.repeat(count: int)</p>
+<p>&#x6570;&#x636E;&#x96C6;&#x91CD;&#x590D;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#x3002;count&#x8BBE;&#x7F6E;&#x4E3A;None&#x6216;&#x8005;-1&#xFF0C;&#x8868;&#x793A;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#x4E3A;&#x65E0;&#x7A77;&#x3002;count&#x8BBE;&#x7F6E;&#x4E3A;1&#x7684;&#x6548;&#x679C;&#x548C;&#x4E0D;&#x8C03;&#x7528;repeat&#x4E00;&#x81F4;</p>
+</li>
+<li>
+<p>dataset.shard(num_shards: int, index: int)</p>
+<p>&#x591A;work&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5C06;&#x6570;&#x636E;&#x96C6;&#x5207;&#x5272;&#x4E3A;num_shards&#x4EFD;&#xFF0C;index&#x8868;&#x793A;work_index</p>
+<p>&#x901A;&#x5E38;num_shards &gt; work_count&#xFF0C;&#x901A;&#x8FC7;work_index&#x53EF;&#x4EE5;&#x4E3A;&#x6BCF;&#x4E2A;work&#x5206;&#x914D;&#x82E5;&#x5E72;&#x4E2A;&#x788E;&#x7247;&#x7684;dataset</p>
+</li>
+<li>
+<p>dataset.shuffle(buffer_size: int, seed=None, reshuffle_each_iteration: bool)</p>
+<ul>
+<li>buffer_size: &#x968F;&#x673A;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;</li>
+<li>seed: &#x968F;&#x673A;&#x79CD;&#x5B50;</li>
+<li>reshuffle_each_iteration: &#x6BCF;&#x4E2A;&#x8FED;&#x4EE3;&#x662F;&#x5426;&#x91CD;&#x65B0;&#x6DF7;&#x6D17;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;True</li>
+</ul>
+<p>&#x968F;&#x673A;&#x7684;&#x7B56;&#x7565;&#xFF1A;</p>
+<ol>
+<li>&#x4ECE;dataset&#x4E2D;&#x8BFB;&#x53D6;buffer_size&#x4E2A;&#x5143;&#x7D20;&#x653E;&#x5230;&#x7F13;&#x51B2;&#x533A;&#x4E2D;</li>
+<li>&#x4ECE;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x968F;&#x673A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x8F93;&#x51FA;</li>
+<li>&#x518D;&#x4ECE;dataset&#x8865;&#x5145;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x653E;&#x5230;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#xFF0C;&#x7EF4;&#x6301;buffer_size&#x4E2A;&#x5143;&#x7D20;</li>
+<li>&#x56DE;&#x5230;&#x7B2C;2&#x6B65;</li>
+</ol>
+<p>&#x4E3A;&#x4E86;&#x8FBE;&#x5230;&#x66F4;&#x597D;&#x7684;shuffle&#x6548;&#x679C;&#xFF0C;shuffle&#x7684;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;&#x5E94;&#x8BE5;&#x4E0D;&#x5C0F;&#x4E8E;&#x6574;&#x4E2A;dataset&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x5373;&#x5728;&#x6574;&#x4E2A;dataset&#x4E0A;&#x8FDB;&#x884C;&#x968F;&#x673A;&#xFF08;&#x5F53;&#x7136;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x8003;&#x8651;dataset&#x7684;&#x5927;&#x5C0F;&#xFF09;&#x3002;</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dataset = tf.data.Dataset.range(<span class="number">10</span>)</span><br><span class="line">dataset = dataset.shuffle(buffer_size=<span class="number">2</span>, seed=<span class="number">5</span>, reshuffle_each_iteration=<span class="literal">False</span>)</span><br><span class="line"><span class="keyword">for</span> record <span class="keyword">in</span> dataset:</span><br><span class="line">    print(record)</span><br></pre></td></tr></table></figure>
+<p>Output&#xFF1A;[1, 2, 0, 4, 3, 5, 7, 8, 6, 9]</p>
+</li>
+<li>
+<p>dataset.skip(count: int)</p>
+<p>&#x8DF3;&#x8FC7;count&#x6761;&#x8BB0;&#x5F55;&#xFF0C;count&#x8BBE;&#x7F6E;&#x4E3A;-1&#xFF0C;&#x8868;&#x793A;&#x8DF3;&#x8FC7;&#x4E4B;&#x540E;&#x7684;&#x6240;&#x6709;&#x8BB0;&#x5F55;</p>
+</li>
+<li>
+<p>dataset.unbatch()</p>
+<p>batch&#x548C;padded_batch&#x7684;&#x9006;&#x64CD;&#x4F5C;&#xFF0C;&#x5C06;&#x4E00;&#x4E2A;&#x6279;&#x6B21;&#x4E3A;N&#x7684;&#x8BB0;&#x5F55;&#xFF0C;&#x5206;&#x6210;N&#x6761;&#x8BB0;&#x5F55;&#x3002;</p>
+</li>
+<li>
+<p>dataset.window(size=1, shift=None, stride=1, drop_remainder=False)</p>
+<ul>
+<li>size: &#x6BCF;&#x4E2A;dataset&#x7684;&#x6700;&#x5927;&#x5143;&#x7D20;&#x4E2A;&#x6570;</li>
+<li>shift: &#x6BCF;&#x4E2A;dataset&#x9996;&#x5143;&#x7D20;&#x7684;&#x6B65;&#x957F;</li>
+<li>stride: dataset&#x5185;&#x90E8;&#x5143;&#x7D20;&#x7684;&#x6B65;&#x957F;</li>
+<li>drop_remainder: dataset&#x7684;&#x957F;&#x5EA6;&#x4E0D;&#x8DB3;size&#x65F6;&#xFF0C;&#x662F;&#x5426;&#x820D;&#x5F03;</li>
+</ul>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dataset = tf.data.Dataset.from_tensor_slices([<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>, <span class="string">&quot;d&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;f&quot;</span>, <span class="string">&quot;g&quot;</span>, <span class="string">&quot;h&quot;</span>])</span><br><span class="line">dataset = dataset.window(size=<span class="number">3</span>, shift=<span class="number">2</span>, stride=<span class="number">3</span>, drop_remainder=<span class="literal">False</span>)</span><br><span class="line"><span class="keyword">for</span> record <span class="keyword">in</span> dataset:</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> record:</span><br><span class="line">        print(element)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
+<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+  <figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">tf</span>.<span class="type">Tensor</span>(b<span class="string">&apos;a&apos;</span>, shape=(), d<span class="keyword">type</span>=string)</span><br><span class="line"><span class="title">tf</span>.<span class="type">Tensor</span>(b<span class="string">&apos;d&apos;</span>, shape=(), d<span class="keyword">type</span>=string)</span><br><span class="line"><span class="title">tf</span>.<span class="type">Tensor</span>(b<span class="string">&apos;g&apos;</span>, shape=(), d<span class="keyword">type</span>=string)</span><br><span class="line"></span><br><span class="line"><span class="title">tf</span>.<span class="type">Tensor</span>(b<span class="string">&apos;c&apos;</span>, shape=(), d<span class="keyword">type</span>=string)</span><br><span class="line"><span class="title">tf</span>.<span class="type">Tensor</span>(b<span class="string">&apos;f&apos;</span>, shape=(), d<span class="keyword">type</span>=string)</span><br><span class="line"></span><br><span class="line"><span class="title">tf</span>.<span class="type">Tensor</span>(b<span class="string">&apos;e&apos;</span>, shape=(), d<span class="keyword">type</span>=string)</span><br><span class="line"><span class="title">tf</span>.<span class="type">Tensor</span>(b<span class="string">&apos;h&apos;</span>, shape=(), d<span class="keyword">type</span>=string)</span><br><span class="line"></span><br><span class="line"><span class="title">tf</span>.<span class="type">Tensor</span>(b<span class="string">&apos;g&apos;</span>, shape=(), d<span class="keyword">type</span>=string)</span><br></pre></td></tr></table></figure>
+<p>size&#x63A7;&#x5236;&#x4E86;&#x6BCF;&#x4E2A;dataset&#x7684;&#x6700;&#x5927;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x3002;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x8FD4;&#x56DE;&#x4E86;4&#x4E2A;dataset&#xFF0C;&#x6BCF;&#x4E2A;dataset&#x7684;&#x6700;&#x5927;&#x957F;&#x5EA6;&#x90FD;&#x4E0D;&#x8D85;&#x8FC7;size=3</p>
+<p>shift&#x8BBE;&#x7F6E;&#x6BCF;&#x4E2A;dataset&#x9996;&#x5143;&#x7D20;&#x7684;&#x95F4;&#x9694;&#x3002;&#x4E0A;&#x9762;dataset&#x7684;&#x9996;&#x5143;&#x7D20;&#x5206;&#x522B;&#x4E3A;[&#x201C;a&#x201D;, &#x201C;c&#x201D;, &#x201C;e&#x201D;, &#x201C;g&#x201D;]&#xFF0C;&#x76F8;&#x90BB;&#x4E24;&#x4E2A;dataset&#x4E4B;&#x95F4;&#x7684;&#x6B65;&#x957F;&#x90FD;&#x662F;shift=2</p>
+<p>stride&#x8BBE;&#x7F6E;&#x4E86;&#x6BCF;&#x4E2A;dataset&#x5185;&#x90E8;&#x5143;&#x7D20;&#x4E4B;&#x95F4;&#x7684;&#x6B65;&#x957F;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;dataset=[&#x201C;a&#x201D;, &#x201C;d&#x201D;, &#x201C;g&#x201D;]&#xFF0C;&#x76F8;&#x90BB;&#x4E24;&#x4E2A;&#x5143;&#x7D20;&#x4E4B;&#x95F4;&#x7684;&#x6B65;&#x957F;&#x662F;stride=3&#x3002;&#x540E;&#x9762;&#x7684;&#x51E0;&#x4E2A;dataset&#x90FD;&#x662F;&#x8FD9;&#x6837;&#x7684;</p>
+<p>drop_remainder&#x8BBE;&#x7F6E;&#x4E3A;True&#xFF0C;&#x5219;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x5C11;&#x4E8E;size&#x7684;dataset&#xFF0C;&#x90FD;&#x4F1A;&#x88AB;&#x820D;&#x5F03;</p>
+</li>
+<li>
+<p>dataset.with_options(options=None)</p>
+<p>&#x4E3A;dataset&#x8BBE;&#x7F6E;options</p>
+</li>
+</ul>
+<h2>&#x9AD8;&#x6548;&#x6D41;&#x6C34;&#x7EBF;</h2>
+<ul>
+<li>&#x4F7F;&#x7528;Prefetch&#x6570;&#x636E;&#x9884;&#x52A0;&#x8F7D;&#x673A;&#x5236;</li>
+<li>&#x4F7F;&#x7528;Interleave&#x5E76;&#x53D1;</li>
+<li>&#x4F7F;&#x7528;map&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x8BBE;&#x7F6E;num_parallel_calls&#x53C2;&#x6570;</li>
+<li>&#x5728;&#x6570;&#x636E;&#x7B2C;&#x4E00;&#x6B21;epoch&#x65F6;&#xFF0C;&#x4F7F;&#x7528;cache&#x64CD;&#x4F5C;&#x6765;&#x7F13;&#x5B58;&#x6570;&#x636E;</li>
+<li>&#x4F7F;&#x7528;map&#x65F6;&#xFF0C;&#x8BBE;&#x7F6E;&#x5411;&#x91CF;&#x5316;&#x7684;&#x51FD;&#x6570;</li>
+<li>&#x4F7F;&#x7528;interleave&#x3001;prefetch&#x3001;shuffle&#x524D;&#xFF0C;&#x5148;&#x4F7F;&#x7528;&#x80FD;&#x591F;&#x51CF;&#x5C11;&#x6570;&#x636E;&#x7A7A;&#x95F4;&#x7684;&#x64CD;&#x4F5C;</li>
+</ul>
+<h2>&#x597D;&#x7528;&#x7684;API</h2>
+<ul>
+<li>
+<p>tf.data.experimental.make_batched_features_dataset</p>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x751F;&#x6210;&#x6307;&#x5B9A;&#x6279;&#x6B21;&#x7684;&#x6570;&#x636E;&#x96C6;&#x3002;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53EA;&#x662F;&#x5BF9;Example&#x683C;&#x5F0F;&#x5B58;&#x50A8;&#x7684;TFRecord&#x6570;&#x636E;&#x8FDB;&#x884C;&#x89E3;&#x6790;</p>
+<ul>
+<li>file_pattern: &#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;</li>
+<li>batch_size: &#x6279;&#x6B21;&#x5927;&#x5C0F;</li>
+<li>features: TFRecord&#x7684;schema</li>
+<li>reader=core_readers.TFRecordDataset: reader</li>
+<li>label_key=None: &#x6307;&#x5B9A;label&#x7684;&#x540D;&#x79F0;</li>
+<li>reader_args=None: reader args</li>
+<li>num_epochs=None: &#x6570;&#x636E;&#x96C6;&#x8FED;&#x4EE3;&#x8F6E;&#x6570;</li>
+<li>shuffle=True: &#x662F;&#x5426;shuffle</li>
+<li>shuffle_buffer_size=10000: shuffle buffer size</li>
+<li>shuffle_seed=None: shuffle size</li>
+<li>prefetch_buffer_size=dataset_ops.AUTOTUNE: prefetch buffer size</li>
+<li>reader_num_threads=1: &#x8FD9;&#x4E2A;&#x8D4B;&#x503C;&#x7ED9;&#x4E86;parallel_interleave&#x51FD;&#x6570;&#x7684;cycle_length</li>
+<li>parser_num_threads=2: &#x8FD9;&#x4E2A;&#x8D4B;&#x503C;&#x7ED9;&#x4E86;parse_example_dataset&#x51FD;&#x6570;&#x7684;num_parallel_calls</li>
+<li>sloppy_ordering=False: &#x8FD9;&#x4E2A;&#x8D4B;&#x503C;&#x7ED9;&#x4E86;parallel_interleave&#x51FD;&#x6570;&#x7684;sloppy</li>
+<li>drop_final_batch=False: &#x8FD9;&#x4E2A;&#x8D4B;&#x503C;&#x7ED9;&#x4E86;batch&#x51FD;&#x6570;&#x7684;drop_remainder</li>
+</ul>
+<p>parallel_interleave&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x662F;tensorflow1.x&#x63D0;&#x4F9B;&#x7684;&#xFF0C;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x3002;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x548C;interleave&#x7684;&#x6548;&#x679C;&#x4E00;&#x81F4;&#xFF0C;sloppy_ordering&#x8BBE;&#x7F6E;&#x4E3A;False&#x5C31;&#x53EF;&#x4EE5;&#x3002;</p>
+</li>
+<li>
+<p>tf.data.experimental.make_csv_dataset</p>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x548C;&#x4E0A;&#x9762;&#x7C7B;&#x4F3C;&#xFF0C;&#x4E0D;&#x8FC7;&#x662F;&#x5904;&#x7406;CSV&#x683C;&#x5F0F;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<ul>
+<li>file_pattern: &#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;</li>
+<li>batch_size: &#x6279;&#x6B21;&#x5927;&#x5C0F;</li>
+<li>column_names=None: &#x5217;&#x540D;</li>
+<li>column_defaults=None: &#x5217;&#x9ED8;&#x8BA4;&#x503C;</li>
+<li>label_name=None: &#x6307;&#x5B9A;label&#x7684;&#x540D;&#x79F0;</li>
+<li>select_columns=None:</li>
+<li>field_delim=&quot;,&quot;: &#x5217;&#x5206;&#x9694;&#x7B26;</li>
+<li>use_quote_delim=True:</li>
+<li>na_value=&quot;&quot;:</li>
+<li>header=True:</li>
+<li>num_epochs=None:</li>
+<li>shuffle=True:</li>
+<li>shuffle_buffer_size=10000:</li>
+<li>shuffle_seed=None:</li>
+<li>prefetch_buffer_size=dataset_ops.AUTOTUNE:</li>
+<li>num_parallel_reads=1:</li>
+<li>sloppy=False:</li>
+<li>num_rows_for_inference=100:</li>
+<li>compression_type=None:</li>
+<li>ignore_errors=False:</li>
+</ul>
+</li>
+</ul>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://www.ritchie.top/2019/12/28/tensorflow-dataset/" data-id="ck5610qhl00024oz6vby08u4u" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3aS27DMAxF0ex/0+4CAkv3kU4BU1ejoE5sHQ9YfvT54HV9re+r/Pt3vyXfby0ZMmS8lnEt1/o7d4za/dewzauRIUPGAQwSCtdbXP+FgNPnypAhQwYJgp3Hp4FYhgwZMvqBr5MypneQIUPGmYy0yFy32MimeXn8cC0uQ4aMFzJ41/3/P/9kviFDhoxXMa5wpaPHNFBepSVDhozZjLRZX2vM8QKVp30yZMg4h1ELpusiM900L3TjdyxDhowRDHLT/ibW4PTVbJ4lQ4aMoYz0Bzwspq18Hmo38w0ZMmSMY3QKznQUyotV3sKTIUPGbEatHE2DKb/KD1ugW8iQIWMEo3aeoVOyxqleKXGUIUPGJAZJ5mqpHk8r0zbcZoQpQ4aMcYxa8dkZOnYSSpTnypAhYxwjbXs9VXCSZPGBMyMyZMgYyqg19PnWa1eDDFeGDBmjGbVBY9pcSw+fxb1AGTJkjGOkDTVS9PJwnII3VBkyZBzA4LUhfwVpgcpHDpuTIzJkyBjKIAExTfWe6omhMC1DhowjGfFxhzCJTMeWm5clQ4aMAxhpi61zhKKWRKKAK0OGjHGMK1zpIYx+kC0mhTJkyBjE6M8H09K3M9Ts/2OQIUPGexm1zfFN8+DLE01Ui8uQIWMcIx0u9ltynSL2NuDKkCFDBj+kVWrut3JYGTJkyMBtL96k67yIBwKuDBkyXsggRSwPiB02L2JlyJBxDqNzUqPG+8VQU4YMGUMZf8Nw2xmtzHwbAAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/tensorflow-dataset-pipeline/">tensorflow dataset pipeline</a></div><div class="post-nav"><a class="next" href="/2019/12/25/tensorflow-tfrecord-process/">【tensorflow】TFRecord数据读写</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css?v=0.0.0"><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=0.0.0"></script><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js?v=0.0.0"></script><script>var gitalk = new Gitalk({
+  clientID: 'e1d9a23bff9cf37a908f',
+  clientSecret: 'e940ee66119d68ddc9e557b57925f146ff8e180f',
+  repo: 'ritchietop.github.io',
+  owner: 'ritchietop',
+  admin: ['ritchietop'],
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('container')
+</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/paper/">paper</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tensorflow/">tensorflow</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/tensorflow-dataset-pipeline/" style="font-size: 15px;">tensorflow dataset pipeline</a> <a href="/tags/dnn-recommendation/" style="font-size: 15px;">dnn recommendation</a> <a href="/tags/tensorflow-tfrecord-sequenceExample/" style="font-size: 15px;">tensorflow tfrecord sequenceExample</a> <a href="/tags/tensorflow-tfrecord-sequenceExample-spark-feature/" style="font-size: 15px;">tensorflow tfrecord sequenceExample spark feature</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/12/28/tensorflow-dataset/">【tensorflow】Dataset简明教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/25/tensorflow-tfrecord-process/">【tensorflow】TFRecord数据读写</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/24/tensorflow-tfrecord-basic_datastruct/">【tensorflow】TFRecord数据结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/15/paper-reading-youtube-dnn-recommendation/">【论文小品】Deep neural networks for YouTube recommendations</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/08/simple-markdown-syntax/">简明Markdown语法</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://tf.wiki/" title="简单粗暴 TensorFlow 2.0" target="_blank">简单粗暴 TensorFlow 2.0</a><ul></ul><a href="https://keras.io/zh/" title="Keras: 基于 Python 的深度学习库" target="_blank">Keras: 基于 Python 的深度学习库</a><ul></ul><a href="https://leetcode-cn.com/" title="力扣（LeetCode）" target="_blank">力扣（LeetCode）</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Ritchie's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
