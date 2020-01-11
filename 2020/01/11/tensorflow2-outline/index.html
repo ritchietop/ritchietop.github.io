@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="python, scala, spark, hive, hbase, hadoop, tensorflow, flink, 机器学习, 深度学习, 算法"><title>【Tensorflow2】从这里开始 | Ritchie's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + '87868a9c378cabc27812ae2d1ebfbb13';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();</script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">【Tensorflow2】从这里开始</h1><a id="logo" href="/.">Ritchie's Blog</a><p class="description">点滴记录，技术提升进程</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-list"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于我</i></a><a href="/timeline/"><i class="fa fa-history"> 大事记</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">【Tensorflow2】从这里开始</h1><div class="post-meta">Jan 11, 2020<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><div class="post-content"><p>&#x6700;&#x8FD1;&#x591C;&#x4E0D;&#x80FD;&#x5BD0;&#xFF0C;&#x603B;&#x662F;&#x6709;&#x4E00;&#x4E2A;&#x58F0;&#x97F3;&#x5728;&#x8033;&#x8FB9;&#x56DE;&#x8361;&#xFF1A;</p>
+<blockquote>
+<p>&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#x7684;&#x5927;&#x6F6E;&#x90FD;&#x5DF2;&#x7ECF;&#x6765;&#x4E86;&#xFF0C;&#x4F60;&#x65E2;&#x7136;&#x8FD8;&#x4E0D;&#x61C2;Tensorflow&#xFF01;</p>
+</blockquote>
+<p>&#x771F;&#x7684;&#x662F;&#x5440;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E00;&#x540D;&#x6807;&#x699C;&#x81EA;&#x5DF1;&#x4E3A;&#x63A8;&#x8350;&#x7B97;&#x6CD5;&#x5DE5;&#x7A0B;&#x5E08;&#x7684;&#x5C0F;&#x5B66;&#x751F;&#xFF0C;&#x6211;&#x7F9E;&#x6127;&#x554A;&#xFF01;&#x5176;&#x5B9E;&#x4E5F;&#x4E0D;&#x662F;&#x6211;&#x4E0D;&#x5B66;&#xFF0C;&#x53EA;&#x662F;&#x4E00;&#x53F6;&#x969C;&#x76EE;&#xFF0C;&#x4E0D;&#x89C1;&#x6CF0;&#x5C71;&#x3002;<br>
+&#x771F;&#x6B63;&#x5730;&#x61C2;&#x5F97;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x5168;&#x9762;&#x7684;&#x3001;&#x7CFB;&#x7EDF;&#x7684;&#x3002;&#x75DB;&#x5B9A;&#x601D;&#x75DB;&#xFF0C;&#x6211;&#x51B3;&#x5FC3;&#x8981;&#x6709;&#x6240;&#x6539;&#x53D8;&#xFF01;<br>
+&#x65E2;&#x7136;&#x65F6;&#x95F4;&#x5DF2;&#x7ECF;&#x6765;&#x5230;&#x4E86;&#x6FC0;&#x52A8;&#x4EBA;&#x5FC3;&#x7684;2020&#x5E74;&#xFF0C;&#x90A3;&#x6211;&#x4E5F;&#x4E0D;&#x85CF;&#x7740;&#x6396;&#x7740;&#x5566;&#xFF0C;&#x5E72;&#x5C31;&#x662F;&#x4E86;&#xFF01;</p>
+<a id="more"></a>
+<p>&#x8FD9;&#x91CC;&#x662F;&#x7ACB;Flag&#x6253;&#x8138;&#x7BC7;&#x3002;&#xFF08;&#x60F3;&#x6211;&#x76DB;&#x4E16;&#x7F8E;&#x989C;&#xFF0C;&#x5B9A;&#x4E0D;&#x8BB8;&#x4FCA;&#x4FCF;&#x7684;&#x8138;&#x988A;&#x53D7;&#x534A;&#x70B9;&#x4F24;&#x5BB3;&#xFF01;&#xFF09;<br>
+&#x5F00;&#x6253;&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#x5927;&#x73AF;&#x5883;&#x3002;Tensorflow&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x53D1;&#x5E03;&#x4E86;&#x5168;&#x65B0;&#x7684;2.0&#x7248;&#x672C;&#x3002;&#x6211;&#x96BE;&#x63A9;&#x5185;&#x5FC3;&#x7684;&#x6FC0;&#x52A8;&#xFF0C;&#x51B3;&#x5FC3;&#x8981;&#x629B;&#x5F03;&#x4E0D;&#x582A;&#x56DE;&#x9996;&#x7684;1.x&#x65F6;&#x4EE3;&#x3002;<br>
+&#x6240;&#x4EE5;&#xFF0C;&#x540E;&#x7EED;&#x7684;&#x6240;&#x6709;&#x6587;&#x7AE0;&#x90FD;&#x662F;&#x57FA;&#x4E8E;2.x&#x7248;&#x672C;&#x7684;&#xFF08;&#x6BD5;&#x7ADF;&#x6211;&#x4E5F;&#x4E0D;&#x77E5;&#x9053;&#x80FD;&#x5199;&#x5230;&#x7334;&#x5E74;&#x9A6C;&#x6708;&#xFF09;&#x3002;<br>
+&#x8FD8;&#x6709;&#x4E00;&#x70B9;&#x662F;2.0&#x76F8;&#x5BF9;1.x&#x6765;&#x8BF4;&#xFF0C;&#x66F4;&#x6CE8;&#x91CD;&#x6846;&#x67B6;&#x7684;&#x6613;&#x7528;&#x6027;&#xFF08;&#x518D;&#x4E0D;&#x91CD;&#x89C6;&#x5C31;&#x8981;&#x88AB;PyTorch&#x5E72;&#x7FFB;&#x4E86;&#xFF09;&#x3002;&#x540C;&#x65F6;&#x4E5F;&#x53BB;&#x9664;&#x4E86;&#x5F88;&#x591A;&#x5197;&#x4F59;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x8BA9;&#x6846;&#x67B6;&#x53D8;&#x5F97;&#x66F4;&#x6574;&#x6D01;&#x4E86;&#x3002;<br>
+&#x57FA;&#x4E8E;&#x4E0A;&#x9762;&#x7684;&#x4E8B;&#x5B9E;&#xFF0C;&#x6211;&#x5C06;&#x79EF;&#x6781;&#x54CD;&#x5E94;&#x5B98;&#x65B9;&#x7684;&#x6307;&#x5BFC;&#x7CBE;&#x795E;&#xFF0C;&#x8BD5;&#x56FE;&#x5448;&#x73B0;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;&#x6A21;&#x578B;&#x5F00;&#x53D1;&#x6D41;&#x7A0B;&#x548C;&#x5B98;&#x65B9;&#x529B;&#x633A;&#x7684;&#x4E00;&#x4E9B;&#x9AD8;&#x6548;API&#x3002;&#x7FFB;&#x8BD1;&#x4E00;&#x4E0B;&#x5C31;&#x662F;&#xFF0C;&#x7528;&#x9AD8;&#x7EA7;&#x7684;&#x3001;&#x5C01;&#x88C5;&#x597D;&#x7684;API&#xFF0C;&#x5E95;&#x5C42;&#x7684;&#x77E5;&#x9053;&#x5C31;&#x884C;&#x3002;<br>
+&#x5E9F;&#x8BDD;&#x4E0D;&#x591A;&#x8BF4;&#x4E86;&#xFF0C;&#x5F00;&#x6253;&#xFF01;</p>
+<ul>
+<li>
+<p>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</p>
+<ol>
+<li>&#x4EC0;&#x4E48;&#x662F;Tensorflow</li>
+<li>&#x4E3A;&#x4EC0;&#x4E48;&#x9009;&#x62E9;Tensorflow</li>
+<li>&#x5B89;&#x88C5;&#x914D;&#x7F6E;</li>
+<li>&#x5F00;&#x53D1;&#x73AF;&#x5883;</li>
+<li>&#x6210;&#x529F;&#x4E86;&#xFF1F;</li>
+</ol>
+</li>
+<li>
+<p>&#x6570;&#x636E;&#x76F8;&#x5173;</p>
+<ol>
+<li>&#x6570;&#x636E;&#x5B58;&#x50A8;&#x2014;&#x2014;TFRecord</li>
+<li>&#x6570;&#x636E;&#x52A0;&#x8F7D;&#x2014;&#x2014;Dataset</li>
+<li>&#x6570;&#x636E;&#x5904;&#x7406;&#x2014;&#x2014;FeatureColumn</li>
+</ol>
+</li>
+<li>
+<p>&#x8D70;&#x5FC3;&#x6846;&#x67B6;&#x2014;&#x2014;Keras</p>
+<ol>
+<li>&#x4F7F;&#x7528;&#x6D41;&#x7A0B;</li>
+<li>Sequential</li>
+<li>Functional API</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;Model</li>
+<li>&#x5404;&#x79CD;Layers</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;Layer</li>
+</ol>
+</li>
+<li>
+<p>&#x4EB2;&#x513F;&#x5B50;&#x2014;&#x2014;Estimator</p>
+<ol>
+<li>&#x4F7F;&#x7528;&#x6D41;&#x7A0B;</li>
+<li>Keras&#x8F6C;&#x6B63;</li>
+<li>PremadeEstimator</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;Estimator</li>
+</ol>
+</li>
+<li>
+<p>&#x5206;&#x5E03;&#x5F0F;&#x8BAD;&#x7EC3;</p>
+</li>
+<li>
+<p>&#x5E95;&#x5C42;API</p>
+</li>
+<li>
+<p>Serving</p>
+<ol>
+<li>&#x6A21;&#x578B;&#x90E8;&#x7F72;&#x4E0E;&#x914D;&#x7F6E;</li>
+<li>&#x79BB;&#x7EBF;&#x6267;&#x884C;&#x8BA1;&#x7B97;&#x56FE;</li>
+<li>&#x6A21;&#x578B;&#x4F18;&#x5316;</li>
+<li>&#x6A21;&#x578B;&#x8F6C;&#x6362;</li>
+</ol>
+</li>
+</ul>
+<p>&#x57FA;&#x672C;&#x7684;&#x5927;&#x7EB2;&#x5C31;&#x8FD9;&#x4E9B;&#x5427;&#xFF0C;&#x6709;&#x4E9B;&#x77E5;&#x8BC6;&#x73B0;&#x5728;&#x8FD8;&#x4E0D;&#x662F;&#x5F88;&#x61C2;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x4E5F;&#x5C31;&#x628A;&#x76EE;&#x524D;&#x638C;&#x63E1;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x90FD;&#x7F57;&#x5217;&#x4E0A;&#x53BB;&#x4E86;&#x3002;&#x540E;&#x9762;&#x968F;&#x7740;&#x6211;&#x6280;&#x80FD;&#x63D0;&#x5347;&#xFF0C;&#x518D;&#x6162;&#x6162;&#x8865;&#x5145;&#x548C;&#x8C03;&#x6574;&#x5427;&#x3002;<br>
+&#x65B0;&#x4E16;&#x7EAA;&#x7684;&#x949F;&#x58F0;&#x90FD;&#x54CD;&#x4E86;20&#x5E74;&#x4E86;&#xFF0C;&#x6211;&#x4E5F;&#x8981;&#x6000;&#x63E3;&#x7740;Tensorflow&#x7684;&#x68A6;&#x60F3;&#xFF0C;&#x626C;&#x5E06;&#x542F;&#x7A0B;&#xFF01;</p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="https://www.ritchie.top/2020/01/11/tensorflow2-outline/" data-id="ck58yg7y5000rxnz6rwcoowqx" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aO3LDMAwFwNz/0k6TLpH8ANiZMbiqPHYkcVkg+PDrK74eF9fvX6++uX9y9a7mhYGB8bGMx+11v9Cr5/Q24h52dS8GBsY5jCQUVtn3n/MQfP83GBgYGNXPSchOLgwMDIwJI/8mD6x5AoqBgXEyoxr4eqEzf84ba3EMDIwPZFSD439+fst8AwMD46MYvcIyGVvmxe1kPT/PwcDAWM2oNut7i66Wwb31YGBgbGW8NuDmpWlhj5ONxsDAWM3oHXTIXzAZWyYHOC7fjoGBsYhRTdeqw8W8cO2NRTEwME5g9EaY84Z+tfUW3YuBgbGU0UvakvCat8/yJzzJZzEwMFYzqpVu0obLFzo5J/JHhouBgbGOUS4Ug/I1CaC9TXmyHRgYGEsZk3K0N6TspYxRFY6BgbGU0Sss5wvtHcKoJo4YGBg7GNVCdD5CqI4Bos3FwMA4jNFrn/XAL/7/gIGBsZqRJG29hn7vcGrS1MPAwDiHMXllr9GWJHzVYQMGBsYJjPzmanmZ4KvnbS9XhYGBcQBjclQib7RNxpaFihwDA2Mpo1ou9g5D5EVsOZXEwMBYyngUr2QwWW2ovSUpxMDAWMToDTt7Y4M8yM6PbmBgYOxjTA575S/Od7FZ9GJgYBzAqA4X81ieh+Ne6MfAwMBIGv3VlDEP3IUcFgMDAyMeSfbGCXmQfVLEYmBgrGa8qqGWvD5p5OWjUAwMjBMYk7xrPkOcHOPAwMA4gPENuscD8R171twAAAAASUVORK5CYII=">分享</a><div class="tags"></div><div class="post-nav"><a class="next" href="/2019/12/28/tensorflow-dataset/">【tensorflow】Dataset简明教程</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css?v=0.0.0"><script type="text/javascript" src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js?v=0.0.0"></script><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js?v=0.0.0"></script><script>var gitalk = new Gitalk({
+  clientID: 'e1d9a23bff9cf37a908f',
+  clientSecret: 'e940ee66119d68ddc9e557b57925f146ff8e180f',
+  repo: 'ritchietop.github.io',
+  owner: 'ritchietop',
+  admin: ['ritchietop'],
+  id: md5(location.pathname),
+  distractionFreeMode: false
+})
+gitalk.render('container')
+</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/markdown/">markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/paper/">paper</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tensorflow/">tensorflow</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/dnn-recommendation/" style="font-size: 15px;">dnn recommendation</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/tensorflow-tfrecord-sequenceExample/" style="font-size: 15px;">tensorflow tfrecord sequenceExample</a> <a href="/tags/tensorflow-tfrecord-sequenceExample-spark-feature/" style="font-size: 15px;">tensorflow tfrecord sequenceExample spark feature</a> <a href="/tags/tensorflow-dataset-pipeline/" style="font-size: 15px;">tensorflow dataset pipeline</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/11/tensorflow2-outline/">【Tensorflow2】从这里开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/28/tensorflow-dataset/">【tensorflow】Dataset简明教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/25/tensorflow-tfrecord-process/">【tensorflow】TFRecord数据读写</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/24/tensorflow-tfrecord-basic_datastruct/">【tensorflow】TFRecord数据结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/15/paper-reading-youtube-dnn-recommendation/">【论文小品】Deep neural networks for YouTube recommendations</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/08/simple-markdown-syntax/">简明Markdown语法</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://tf.wiki/" title="简单粗暴 TensorFlow 2.0" target="_blank">简单粗暴 TensorFlow 2.0</a><ul></ul><a href="https://keras.io/zh/" title="Keras: 基于 Python 的深度学习库" target="_blank">Keras: 基于 Python 的深度学习库</a><ul></ul><a href="https://leetcode-cn.com/" title="力扣（LeetCode）" target="_blank">力扣（LeetCode）</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">Ritchie's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
